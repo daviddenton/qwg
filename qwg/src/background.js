@@ -21,14 +21,23 @@ var setup = {
         "mel":"http://localhost/" + "melQuery"
     }
 };
-var qwg = new Qwg(setup);
+
+var qwg = new Qwg({
+    load:setup
+});
 chrome.omnibox.onInputChanged.addListener(function (text, suggest) {
-    suggest(_.map(qwg.suggestions(text), function (suggestion) {
-        return {content:suggestion, description:"Search: " + suggestion};
-    }));
+    chrome.storage.sync.get("qwgData", function (stored) {
+        var schema = stored.qwgData ? stored.qwgData : setup;
+        suggest(_.map(qwg.suggestions(text, schema), function (suggestion) {
+            return {content:suggestion, description:"Search: " + suggestion};
+        }));
+    });
 });
 
 chrome.omnibox.onInputEntered.addListener(function (text) {
-    var url = qwg.resolveUrl(text);
-    if (url) chrome.tabs.create({url:url});
+    chrome.storage.sync.get("qwgData", function (stored) {
+        var schema = stored.qwgData ? stored.qwgData : setup;
+        var url = qwg.resolveUrl(text, schema);
+        if (url) chrome.tabs.create({url:url});
+    });
 });
