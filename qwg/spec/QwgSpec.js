@@ -67,11 +67,11 @@ describe("Qwg", function () {
         });
 
         describe("when complete", function () {
-            it("should not resolve to a hardcoded url", function () {
+            it("should resolve to a hardcoded url", function () {
                 expect(qwg.resolveUrl(" bill hicks")).toEqual("hicksQuery");
             });
 
-            it("should not resolve to the result of a function call", function () {
+            it("should resolve to the result of a function call", function () {
                 expect(qwg.resolveUrl(" bob bill")).toEqual("iWasCalledWith" + " bob bill");
             });
         });

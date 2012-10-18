@@ -15,7 +15,9 @@ var s2 = {
         "lazenby":"lazenbyQuery"
     },
     "rita":{
-        "alan":"alanQuery"
+        "alan":{
+            "q":"alanQuery"
+        }
     },
     "sue": {
         "mel":"melQuery"
@@ -58,13 +60,21 @@ function Qwg(schema) {
         },
         resolveUrl: function (text) {
             function resolveUrl0(tList, target) {
+                console.log("s");
+                console.log(tList);
+                console.log(target);
                 if (tList.length == 0) {
                     return '';
                 }
                 if (tList.length == 1) {
-                    return _.isFunction(target) ? target(text) : target;
+                    var newTarget = target[tList[0]];
+                    if (!newTarget) return '';
+                    if (_.isFunction(newTarget)) return newTarget(text);
+                    if (_.isString(newTarget)) return newTarget;
+                    return '';
                 }
-                return resolveUrl0(tList[0], target[tList[0]]);
+
+                return resolveUrl0(_.rest(tList), target[tList[0]]);
             }
 
             return resolveUrl0(toQueryTokens(text), schema);
