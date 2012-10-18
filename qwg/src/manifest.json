@@ -4,12 +4,14 @@
     "version":         "1.0",
     "manifest_version":2,
     "background":      {
-        "scripts":["lib/underscore-min.js",
-            "lib/underscore.string.min.js",
+        "scripts":[
+            "lib/underscore/js/underscore-min.js",
+            "lib/underscore/js/underscore.string.min.js",
             "bootstrap.js",
             "ChromeStorage.js",
             "Qwg.js",
-            "background.js"]
+            "background.js",
+            "options.js"]
     },
     "icons":           {
         "16": "icon.png",
