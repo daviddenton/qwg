@@ -1,31 +1,32 @@
-var setup = (function () {
-    var twice = function (text) {
-        return "http://localhost:9876:" + text + text;
-    };
-    var echo = function (text) {
-        return "http://localhost:9876:" + text;
-    };
-    var toUpper = function (text) {
-        return "http://localhost:9876:" + text.toUpperCase();
-    };
-
-    return {
-        "bob": {
-            "bill":twice
-        },
-        "rita":{
-            "alan":echo
-        },
-        "sue": {
-            "mel":toUpper
+var setup = {
+    "bill":{
+        "hicks":"hicksQuery"
+    },
+    "bob": {
+        "bill":function (text) {
+            return "iWasCalledWith" + text;
         }
+    },
+    "bond":{
+        "moore":  "mooreQuery",
+        "craig":  "craigQuery",
+        "connery":"conneryQuery",
+        "dalton": "daltonQuery",
+        "lazenby":"lazenbyQuery"
+    },
+    "rita":{
+        "alan":"alanQuery"
+    },
+    "sue": {
+        "mel":"melQuery"
     }
-})();
+};
 
 var qwg = new Qwg(setup);
 chrome.omnibox.onInputChanged.addListener(function (text, suggest) {
     suggest(_.map(qwg.suggestions(text), function (suggestion) {
-        return {content:suggestion, description:suggestion};
+        console.log(suggestion)
+        return {content:suggestion + " ", description: "Search: " + suggestion};
     }));
 });
 

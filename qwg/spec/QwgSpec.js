@@ -43,11 +43,11 @@ describe("Qwg", function () {
         });
 
         it("should display second tier items", function () {
-            expect(qwg.suggestions(" bond ")).toEqual(["connery", "craig", "dalton", "lazenby", "moore"]);
+            expect(qwg.suggestions(" bond ")).toEqual(["bond connery", "bond craig", "bond dalton", "bond lazenby", "bond moore"]);
         });
 
         it("should narrow down second tier input to just matching items", function () {
-            expect(qwg.suggestions(" bond c")).toEqual(["connery", "craig"]);
+            expect(qwg.suggestions(" bond c")).toEqual(["bond connery", "bond craig"]);
         });
     });
 

@@ -22,26 +22,32 @@ var s2 = {
     }
 };
 function Qwg(schema) {
+    function sortedMatchingKeys(token, o) {
+        var matchingKeys = _.filter(_.keys(o), function (t) { return _.startsWith(t, token) });
+        return _.sortBy(matchingKeys, function (name) { return name; });
+    }
+
     return {
         suggestions:function (text) {
-            function sortedMatchingKeys(token, o) {
-                var matchingKeys = _.filter(_.keys(o), function (t) {
-                    return _.startsWith(t, token)
-                });
-                return _.sortBy(matchingKeys, function (name) { return name; });
-            }
-
-            function suggestions0(tList, target) {
+            function suggestions0(tList, target, matchedTokens) {
+                function prependWithText(term) {
+                    var newMatched = matchedTokens.slice();
+                    newMatched.push(term);
+                    return _.toSentence(newMatched)
+                }
                 if (tList.length == 0) {
-                    return sortedMatchingKeys("", target);
+                    return _.map(sortedMatchingKeys("", target), prependWithText);
                 }
                 if (tList.length == 1 && !target[tList[0]]) {
-                    return sortedMatchingKeys(tList[0], target);
+                    return _.map(sortedMatchingKeys(tList[0], target), prependWithText);
                 }
-                return suggestions0(tList.slice(1), target[tList[0]]);
+                matchedTokens.push[tList[0]]
+                return suggestions0(_.rest(tList), target[tList[0]], matchedTokens);
             }
 
-            return suggestions0(text.trim().split(" "), schema);
+            var trimmed = _.trim(text);
+            var first = trimmed.length == 0 ? [] : trimmed.split(" ")
+            return suggestions0(first, schema, []);
         },
         resolveUrl: function (text) {
             function resolveUrl0(tList, target) {
