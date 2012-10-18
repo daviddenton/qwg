@@ -10,6 +10,11 @@
     <script type="text/javascript" src="lib/underscore/js/underscore-min.js"></script>
     <script type="text/javascript" src="ChromeStorage.js"></script>
     <style type="text/css">
+
+        .CodeMirror {
+            padding: 20px;
+        }
+
         td {
             padding-right: 20px;
         }
@@ -24,7 +29,7 @@
 
         h1 {
             letter-spacing: -3px;
-            font-size: 3.23em;
+            font-size: 2.5em;
             font-weight: bold;
             margin: 0;
         }
@@ -63,16 +68,6 @@
             line-height: 1.2em;
         }
 
-        a:link, a:visited, .quasilink {
-            color: #df0019;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        a:hover, .quasilink:hover {
-            color: #800004;
-        }
-
         h1 a:link, h1 a:visited, h1 a:hover {
             color: black;
         }
@@ -85,7 +80,9 @@
     </style>
 <body>
 <h1>Qwg: configuration</h1>
-<p>Paste your Javascript config object below. The leaves can be named functions which take the text content e.g fName(text) {...}</p>
+
+<p>Paste your Javascript config object below. The leaves can be named functions which take the text content e.g
+    fName(text) {...}</p>
 
 <div id="code"></div>
 <button>save</button>
