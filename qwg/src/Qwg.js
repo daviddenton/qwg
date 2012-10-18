@@ -1,28 +1,3 @@
-var s2 = {
-    "bill":{
-        "hicks":"hicksQuery"
-    },
-    "bob": {
-        "bill":function (text) {
-            return "iWasCalledWith" + text;
-        }
-    },
-    "bond":{
-        "moore":  "mooreQuery",
-        "craig":  "craigQuery",
-        "connery":"conneryQuery",
-        "dalton": "daltonQuery",
-        "lazenby":"lazenbyQuery"
-    },
-    "rita":{
-        "alan":{
-            "q":"alanQuery"
-        }
-    },
-    "sue": {
-        "mel":"melQuery"
-    }
-};
 function Qwg(schema) {
     function toQueryTokens(text) {
         var trimmed = _.trim(text);
