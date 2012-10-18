@@ -24,7 +24,7 @@ describe("Qwg", function () {
             }
         };
 
-        qwg = new Qwg({load:schema});
+        qwg = new Qwg(schema);
     });
 
     describe("suggestions", function () {

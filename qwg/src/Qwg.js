@@ -28,7 +28,7 @@ function Qwg(schema) {
                 return suggestions0(_.rest(tList), target[tList[0]], matchedTokens);
             }
 
-            return suggestions0(toQueryTokens(text), schema.load, []);
+            return suggestions0(toQueryTokens(text), schema, []);
         },
         resolveUrl: function (text) {
             function resolveUrl0(tList, target) {
@@ -43,7 +43,7 @@ function Qwg(schema) {
                 return resolveUrl0(_.rest(tList), target[tList[0]]);
             }
 
-            return resolveUrl0(toQueryTokens(text), schema.load);
+            return resolveUrl0(toQueryTokens(text), schema);
         }
     };
 }
