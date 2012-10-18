@@ -22,6 +22,11 @@ var s2 = {
     }
 };
 function Qwg(schema) {
+    function toQueryTokens(text) {
+        var trimmed = _.trim(text);
+        return trimmed.length == 0 ? [] : trimmed.split(" ");
+    }
+
     function sortedMatchingKeys(token, o) {
         var matchingKeys = _.filter(_.keys(o), function (t) { return _.startsWith(t, token) });
         return _.sortBy(matchingKeys, function (name) { return name; });
@@ -49,14 +54,12 @@ function Qwg(schema) {
                 return suggestions0(_.rest(tList), target[tList[0]], matchedTokens);
             }
 
-            var trimmed = _.trim(text);
-            var first = trimmed.length == 0 ? [] : trimmed.split(" ")
-            return suggestions0(first, schema, []);
+            return suggestions0(toQueryTokens(text), schema, []);
         },
         resolveUrl: function (text) {
             function resolveUrl0(tList, target) {
                 if (tList.length == 0) {
-                    return target;
+                    return '';
                 }
                 if (tList.length == 1) {
                     return _.isFunction(target) ? target(text) : target;
@@ -64,7 +67,7 @@ function Qwg(schema) {
                 return resolveUrl0(tList[0], target[tList[0]]);
             }
 
-            return resolveUrl0(text.trim().split(" "), schema);
+            return resolveUrl0(toQueryTokens(text), schema);
         }
     };
 }
