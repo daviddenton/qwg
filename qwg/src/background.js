@@ -31,6 +31,7 @@ chrome.omnibox.onInputChanged.addListener(function (text, suggest) {
 
 chrome.omnibox.onInputEntered.addListener(function (text) {
     chrome.tabs.getCurrent(function (tab) {
-        chrome.tabs.update(tab.id, {url:qwg.resolveUrl(text)});
+        var url = qwg.resolveUrl(text);
+        if(url) chrome.tabs.update(tab.id, {url:url});
     });
 });

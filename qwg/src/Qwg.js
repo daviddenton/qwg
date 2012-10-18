@@ -60,18 +60,14 @@ function Qwg(schema) {
         },
         resolveUrl: function (text) {
             function resolveUrl0(tList, target) {
-                console.log("s");
-                console.log(tList);
-                console.log(target);
                 if (tList.length == 0) {
-                    return '';
+                    return undefined;
                 }
                 if (tList.length == 1) {
                     var newTarget = target[tList[0]];
-                    if (!newTarget) return '';
                     if (_.isFunction(newTarget)) return newTarget(text);
                     if (_.isString(newTarget)) return newTarget;
-                    return '';
+                    return undefined;
                 }
 
                 return resolveUrl0(_.rest(tList), target[tList[0]]);

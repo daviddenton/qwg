@@ -55,13 +55,13 @@ describe("Qwg", function () {
         describe("when incomplete", function () {
             describe("should not resolve to a url for", function () {
                 it("empty queries", function () {
-                    expect(qwg.resolveUrl(" ")).toEqual("");
+                    expect(qwg.resolveUrl(" ")).toEqual(undefined);
                 });
                 it("partial words", function () {
-                    expect(qwg.resolveUrl(" b")).toEqual("");
+                    expect(qwg.resolveUrl(" b")).toEqual(undefined);
                 });
                 it("when there are deeper levels", function () {
-                    expect(qwg.resolveUrl(" bill")).toEqual("");
+                    expect(qwg.resolveUrl(" bill")).toEqual(undefined);
                 });
             });
         });
