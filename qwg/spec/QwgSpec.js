@@ -39,7 +39,7 @@ describe("Qwg", function () {
         });
 
         it("should ignore final function values", function () {
-            expect(qwg.suggestions("bob bill")).toEqual([]);
+            expect(qwg.suggestions("bob bill")).toEqual(["bob bill"]);
         });
 
         it("should display second tier items", function () {

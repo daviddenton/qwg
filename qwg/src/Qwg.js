@@ -30,18 +30,22 @@ function Qwg(schema) {
     return {
         suggestions:function (text) {
             function suggestions0(tList, target, matchedTokens) {
-                function prependWithText(term) {
+                function prependWithCurrentText(term) {
                     var newMatched = matchedTokens.slice();
                     newMatched.push(term);
-                    return _.toSentence(newMatched)
+                    return newMatched.join(' ');
                 }
+
                 if (tList.length == 0) {
-                    return _.map(sortedMatchingKeys("", target), prependWithText);
+                    if (_.isFunction(target)) {
+                        return [text];
+                    }
+                    return _.map(sortedMatchingKeys("", target), prependWithCurrentText);
                 }
                 if (tList.length == 1 && !target[tList[0]]) {
-                    return _.map(sortedMatchingKeys(tList[0], target), prependWithText);
+                    return _.map(sortedMatchingKeys(tList[0], target), prependWithCurrentText);
                 }
-                matchedTokens.push[tList[0]]
+                matchedTokens.push(tList[0]);
                 return suggestions0(_.rest(tList), target[tList[0]], matchedTokens);
             }
 

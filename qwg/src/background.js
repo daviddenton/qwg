@@ -25,8 +25,7 @@ var setup = {
 var qwg = new Qwg(setup);
 chrome.omnibox.onInputChanged.addListener(function (text, suggest) {
     suggest(_.map(qwg.suggestions(text), function (suggestion) {
-        console.log(suggestion)
-        return {content:suggestion + " ", description: "Search: " + suggestion};
+        return {content:suggestion, description: "Search: " + suggestion};
     }));
 });
 
