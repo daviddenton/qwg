@@ -19,10 +19,7 @@ function Qwg(schema) {
                 }
 
                 if (tList.length == 0) {
-                    if (_.isFunction(target)) {
-                        return [text];
-                    }
-                    return _.map(sortedMatchingKeys("", target), prependWithCurrentText);
+                    return _.isFunction(target) ? [text] : _.map(sortedMatchingKeys("", target), prependWithCurrentText);
                 }
                 if (tList.length == 1 && !target[tList[0]]) {
                     return _.map(sortedMatchingKeys(tList[0], target), prependWithCurrentText);
@@ -35,9 +32,7 @@ function Qwg(schema) {
         },
         resolveUrl: function (text) {
             function resolveUrl0(tList, target) {
-                if (tList.length == 0) {
-                    return undefined;
-                }
+                if (tList.length == 0)  return undefined;
                 if (tList.length == 1) {
                     var newTarget = target[tList[0]];
                     if (_.isFunction(newTarget)) return newTarget(text);
