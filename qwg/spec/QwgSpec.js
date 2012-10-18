@@ -6,7 +6,7 @@ describe("Qwg", function () {
             },
             "bob": {
                 "bill":function (text) {
-                    return "iWasCalledWith" + text;
+                    return "iWasCalledWith " + text;
                 }
             },
             "bond":{
@@ -67,12 +67,12 @@ describe("Qwg", function () {
         });
 
         describe("when complete", function () {
-            it("should resolve to a hardcoded url", function () {
+            it("should resolve to a hardcoded url representing the whole tree", function () {
                 expect(qwg.resolveUrl(" bill hicks")).toEqual("hicksQuery");
             });
 
             it("should resolve to the result of a function call", function () {
-                expect(qwg.resolveUrl(" bob bill")).toEqual("iWasCalledWith" + " bob bill");
+                expect(qwg.resolveUrl(" bob bill are cool")).toEqual("iWasCalledWith" + " are cool");
             });
         });
     });

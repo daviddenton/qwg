@@ -33,12 +33,9 @@ function Qwg(schema) {
         resolveUrl: function (text) {
             function resolveUrl0(tList, target) {
                 if (tList.length == 0)  return undefined;
-                if (tList.length == 1) {
-                    var newTarget = target[tList[0]];
-                    if (_.isFunction(newTarget)) return newTarget(text);
-                    if (_.isString(newTarget)) return newTarget;
-                    return undefined;
-                }
+                var newTarget = target[tList[0]];
+                if (_.isFunction(newTarget)) return newTarget(tList.slice(1).join(' '));
+                if (_.isString(newTarget)) return newTarget;
 
                 return resolveUrl0(_.rest(tList), target[tList[0]]);
             }
