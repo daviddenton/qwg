@@ -5,13 +5,14 @@
     "manifest_version":2,
     "background":      {
         "scripts":[
+            "lib/underscore/js/underscore.string.min.js",
             "lib/underscore/js/underscore-min.js",
             "lib/underscore/js/underscore.string.min.js",
             "bootstrap.js",
+            "DefaultData.js",
             "ChromeStorage.js",
             "Qwg.js",
-            "background.js",
-            "options.js"]
+            "background.js"]
     },
     "icons":           {
         "16": "icon.png",
@@ -26,6 +27,4 @@
         "contextMenus", "storage", "tabs"
     ],
     "update_url":      "http://github.com/daviddenton/qwg/artifacts/update.xml"
-
-
 }
