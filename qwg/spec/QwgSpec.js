@@ -1,25 +1,25 @@
 describe("Qwg", function () {
     beforeEach(function () {
         var schema = {
-            "bill":{
+            "bill":  {
                 "hardcoded":"hardcodedQuery"
             },
-            "bob": {
+            "bob":   {
                 "simplefunction":function (query) {
                     return "iWasCalledWith " + query;
                 }
             },
-            "bond":{
+            "bond":  {
                 "moore":  "mooreQuery",
                 "craig":  "craigQuery",
                 "connery":"conneryQuery",
                 "dalton": "daltonQuery",
                 "lazenby":"lazenbyQuery"
             },
-            "rita":{
+            "rita":  {
                 "higherOrderFunctions":function (query) {
                     return {
-                        "dynamic": function (query2) {
+                        "dynamic":function (query2) {
                             return "secondTier " + query2;
                         }
                     };
@@ -33,19 +33,6 @@ describe("Qwg", function () {
         qwg = new Qwg(schema);
     });
 
-    describe("bug", function() {
-        var s2 =  function() {
-            return {
-                "name": {
-                    "bob": "http://google.com/"
-                }
-            };
-        }();
-
-        it("doesn't blow up", function () {
-            expect(new Qwg(s2).suggestions("name bob ")).toEqual(["name bob "]);
-        });
-    });
     describe("suggestions", function () {
         it("for whitespace only input should return list of first level items", function () {
             expect(qwg.suggestions(" ")).toEqual(["bill", "bob", "bond", "rita", "thomas"]);
@@ -72,6 +59,10 @@ describe("Qwg", function () {
         it("should narrow down second tier input to just matching items", function () {
             expect(qwg.suggestions(" bond c")).toEqual(["bond connery", "bond craig"]);
         });
+
+        it("should be able to support hardcoded end-values", function () {
+            expect(qwg.suggestions(" bill hardcoded ")).toEqual(["name bob "]);
+        });
     });
 
     describe("queries", function () {
@@ -95,10 +86,10 @@ describe("Qwg", function () {
             });
 
             describe("should resolve to the result of a function call", function () {
-                it("when simple function", function() {
+                it("when simple function", function () {
                     expect(qwg.resolveUrl(" bob simplefunction are cool")).toEqual("iWasCalledWith" + " are cool");
                 });
-                it("when is the result of nested function calls", function() {
+                it("when is the result of nested function calls", function () {
                     expect(qwg.resolveUrl(" bob simplefunction are cool")).toEqual("iWasCalledWith" + " are cool");
                 });
             });
