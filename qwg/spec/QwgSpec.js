@@ -17,9 +17,9 @@ describe("Qwg", function () {
                 "lazenby":"lazenbyQuery"
             },
             "rita":{
-                "selfGenerating":function (query) {
+                "higherOrderFunctions":function (query) {
                     var secondTier = {};
-                    secondTier["dynamic" + query] = function (query2) {
+                    secondTier["dynamic" + query.length] = function (query2) {
                         return "secondTier" + query2;
                     };
                     return secondTier;
@@ -44,8 +44,12 @@ describe("Qwg", function () {
             expect(qwg.suggestions(" bon")).toEqual(["bond"]);
         });
 
-        it("should ignore final function values", function () {
+        it("should ignore function values if they return a string (and are hence a leaf)", function () {
             expect(qwg.suggestions("bob simplefunction")).toEqual(["bob simplefunction"]);
+        });
+
+        it("should use final function values if they return an object (and are hence a node)", function () {
+            expect(qwg.suggestions("rita higherOrderFunctions")).toEqual(["rita higherOrderFunctions dynamic12"]);
         });
 
         it("should display second tier items", function () {
