@@ -61,7 +61,7 @@ describe("Qwg", function () {
         });
 
         it("should be able to support hardcoded end-values", function () {
-            expect(qwg.suggestions(" bill hardcoded ")).toEqual(["name bob "]);
+            expect(qwg.suggestions(" bill hardcoded ")).toEqual([" bill hardcoded "]);
         });
     });
 

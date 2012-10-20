@@ -19,7 +19,7 @@ function Qwg(schema) {
                 }
 
                 if (tList.length == 0) {
-                    return _.isFunction(targetNode) ? [text] : _.map(sortedMatchingKeys("", targetNode), prependWithCurrentText);
+                    return (_.isFunction(targetNode) || _.isString(targetNode)) ? [text] : _.map(sortedMatchingKeys("", targetNode), prependWithCurrentText);
                 }
                 if (!targetNode[tList[0]]) {
                     return _.map(sortedMatchingKeys(tList[0], targetNode), prependWithCurrentText);
