@@ -34,16 +34,10 @@ function Qwg(schema) {
         },
         resolveUrl: function (text) {
             function resolveUrl0(tList, targetNode) {
-                console.log(tList);
-                console.log(targetNode);
                 if (tList.length == 0)  return undefined;
                 var newTarget = targetNode[tList[0]];
-                console.log(newTarget);
                 if (_.isFunction(newTarget) && _.isString(newTarget(""))) return newTarget(tList.slice(1).join(' '));
-                console.log("not a terminal function");
                 if (_.isString(newTarget)) return newTarget.replace("\$QUERY\$", _.rest(tList).join(' '));
-                console.log("not a string");
-
                 var childNode = targetNode[tList[0]];
                 var newTargetNode = _.isFunction(childNode) && !_.isString(childNode(text)) ? childNode(text) : childNode;
                 return resolveUrl0(_.rest(tList), newTargetNode);
