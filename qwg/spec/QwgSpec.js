@@ -18,11 +18,11 @@ describe("Qwg", function () {
             },
             "rita":{
                 "higherOrderFunctions":function (query) {
-                    var secondTier = {};
-                    secondTier["dynamic" + query.length] = function (query2) {
-                        return "secondTier" + query2;
+                    return {
+                        "dynamic": function (query2) {
+                            return "secondTier " + query2;
+                        }
                     };
-                    return secondTier;
                 }
             },
             "thomas":{
@@ -49,7 +49,7 @@ describe("Qwg", function () {
         });
 
         it("should use function values if they return an object (and are hence a node)", function () {
-            expect(qwg.suggestions("rita higherOrderFunctions")).toEqual(["rita higherOrderFunctions dynamic25"]);
+            expect(qwg.suggestions("rita higherOrderFunctions")).toEqual(["rita higherOrderFunctions dynamic"]);
         });
 
         it("should display second tier items", function () {
@@ -81,8 +81,17 @@ describe("Qwg", function () {
                 expect(qwg.resolveUrl(" bill hardcoded")).toEqual("hardcodedQuery");
             });
 
+            describe("should resolve to the result of a function call", function () {
+                it("when simple function", function() {
+                    expect(qwg.resolveUrl(" bob simplefunction are cool")).toEqual("iWasCalledWith" + " are cool");
+                });
+                it("when is the result of nested function calls", function() {
+                    expect(qwg.resolveUrl(" bob simplefunction are cool")).toEqual("iWasCalledWith" + " are cool");
+                });
+            });
+
             it("should resolve to the result of a function call", function () {
-                expect(qwg.resolveUrl(" bob simplefunction are cool")).toEqual("iWasCalledWith" + " are cool");
+                expect(qwg.resolveUrl("rita higherOrderFunctions dynamic something else")).toEqual("secondTier something else");
             });
 
             it("should replace $QUERY$ with the contents of the query", function () {
