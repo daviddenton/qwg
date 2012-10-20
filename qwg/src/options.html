@@ -6,11 +6,29 @@
 <body>
 <h1>Qwg: configuration</h1>
 
-<p>Paste your Javascript config object below. The leaves can be named functions which take the text content e.g
-    fName(text) {...}</p>
+<p>Paste your Javascript config object below.</p>
 
 <div id="code"></div>
 <button id="save">save</button>
+<p>Some notes on configuration:
+<ul>
+    <li>The code must resolve to a single Javascript object</li>
+    <li>A node path in the object can terminate as:
+        <ol>
+            <li>A URL string - which will be used to create a new Chrome tab</li>
+            <li>undefined - no action taken</li>
+        </ol>
+    </li>
+    <li>Individual nodes in the config object can be:
+        <ol>
+            <li>A hardcoded URL string. The token <strong>$QUERY$</strong> in this string will be replaced with the non-matched portion of the command</li>
+            <li>A Leaf function - one which takes the non-matched portion of the command and returns a URL</li>
+            <li>A Node function - one which takes the entire of the previous command and returns another object (with it's own sub-nodes)</li>
+        </ol>
+    </li>
+</ul>
+</p>
+
 </body>
 <script type="text/javascript" src="lib/codemirror/codemirror.js"></script>
 <script type="text/javascript" src="lib/codemirror/javascript.js"></script>
