@@ -48,8 +48,8 @@ describe("Qwg", function () {
             expect(qwg.suggestions("bob simplefunction")).toEqual(["bob simplefunction"]);
         });
 
-        it("should use final function values if they return an object (and are hence a node)", function () {
-            expect(qwg.suggestions("rita higherOrderFunctions")).toEqual(["rita higherOrderFunctions dynamic12"]);
+        it("should use function values if they return an object (and are hence a node)", function () {
+            expect(qwg.suggestions("rita higherOrderFunctions")).toEqual(["rita higherOrderFunctions dynamic25"]);
         });
 
         it("should display second tier items", function () {

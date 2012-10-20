@@ -11,7 +11,7 @@ function Qwg(schema) {
 
     return {
         suggestions:function (text) {
-            function suggestions0(tList, target, matchedTokens) {
+            function suggestions0(tList, targetNode, matchedTokens) {
                 function prependWithCurrentText(term) {
                     var newMatched = matchedTokens.slice();
                     newMatched.push(term);
@@ -19,13 +19,15 @@ function Qwg(schema) {
                 }
 
                 if (tList.length == 0) {
-                    return _.isFunction(target) ? [text] : _.map(sortedMatchingKeys("", target), prependWithCurrentText);
+                    return _.isFunction(targetNode) ? [text] : _.map(sortedMatchingKeys("", targetNode), prependWithCurrentText);
                 }
-                if (!target[tList[0]]) {
-                    return _.map(sortedMatchingKeys(tList[0], target), prependWithCurrentText);
+                if (!targetNode[tList[0]]) {
+                    return _.map(sortedMatchingKeys(tList[0], targetNode), prependWithCurrentText);
                 }
                 matchedTokens.push(tList[0]);
-                return suggestions0(_.rest(tList), target[tList[0]], matchedTokens);
+                var childNode = targetNode[tList[0]];
+                var newTargetNode = _.isFunction(childNode) && !_.isString(childNode(text)) ? childNode(text) : childNode;
+                return suggestions0(_.rest(tList), newTargetNode, matchedTokens);
             }
 
             return suggestions0(toQueryTokens(text), schema, []);
