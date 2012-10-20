@@ -21,7 +21,7 @@ function Qwg(schema) {
                 if (tList.length == 0) {
                     return _.isFunction(target) ? [text] : _.map(sortedMatchingKeys("", target), prependWithCurrentText);
                 }
-                if (tList.length == 1 && !target[tList[0]]) {
+                if (!target[tList[0]]) {
                     return _.map(sortedMatchingKeys(tList[0], target), prependWithCurrentText);
                 }
                 matchedTokens.push(tList[0]);
