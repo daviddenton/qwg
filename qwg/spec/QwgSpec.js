@@ -2,11 +2,11 @@ describe("Qwg", function () {
     beforeEach(function () {
         var schema = {
             "bill":{
-                "hicks":"hicksQuery"
+                "hardcoded":"hardcodedQuery"
             },
             "bob": {
-                "bill":function (text) {
-                    return "iWasCalledWith " + text;
+                "simplefunction":function (query) {
+                    return "iWasCalledWith " + query;
                 }
             },
             "bond":{
@@ -17,10 +17,16 @@ describe("Qwg", function () {
                 "lazenby":"lazenbyQuery"
             },
             "rita":{
-                "alan":"alanQuery"
+                "selfGenerating":function (query) {
+                    var secondTier = {};
+                    secondTier["dynamic" + query] = function (query2) {
+                        return "secondTier" + query2;
+                    };
+                    return secondTier;
+                }
             },
-            "sue": {
-                "mel":"melQuery"
+            "thomas":{
+                "injectedString":"queryGoesBetweenHere>$S$<"
             }
         };
 
@@ -29,7 +35,7 @@ describe("Qwg", function () {
 
     describe("suggestions", function () {
         it("for whitespace only input should return list of first level items", function () {
-            expect(qwg.suggestions(" ")).toEqual(["bill", "bob", "bond", "rita", "sue"]);
+            expect(qwg.suggestions(" ")).toEqual(["bill", "bob", "bond", "rita", "thomas"]);
         });
 
         it("should narrow down input to just matching items", function () {
@@ -39,7 +45,7 @@ describe("Qwg", function () {
         });
 
         it("should ignore final function values", function () {
-            expect(qwg.suggestions("bob bill")).toEqual(["bob bill"]);
+            expect(qwg.suggestions("bob simplefunction")).toEqual(["bob simplefunction"]);
         });
 
         it("should display second tier items", function () {
@@ -68,11 +74,11 @@ describe("Qwg", function () {
 
         describe("when complete", function () {
             it("should resolve to a hardcoded url representing the whole tree", function () {
-                expect(qwg.resolveUrl(" bill hicks")).toEqual("hicksQuery");
+                expect(qwg.resolveUrl(" bill hardcoded")).toEqual("hardcodedQuery");
             });
 
             it("should resolve to the result of a function call", function () {
-                expect(qwg.resolveUrl(" bob bill are cool")).toEqual("iWasCalledWith" + " are cool");
+                expect(qwg.resolveUrl(" bob simplefunction are cool")).toEqual("iWasCalledWith" + " are cool");
             });
         });
     });
