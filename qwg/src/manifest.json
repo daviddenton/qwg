@@ -4,15 +4,7 @@
     "version":         "1.0",
     "manifest_version":2,
     "background":      {
-        "scripts":[
-            "lib/underscore/js/underscore.string.min.js",
-            "lib/underscore/js/underscore-min.js",
-            "lib/underscore/js/underscore.string.min.js",
-            "bootstrap.js",
-            "DefaultData.js",
-            "ChromeStorage.js",
-            "Qwg.js",
-            "background.js"]
+        "page":"background.html"
     },
     "icons":           {
         "16": "icon.png",
@@ -26,5 +18,8 @@
     "permissions":     [
         "contextMenus", "storage", "tabs"
     ],
+    "sandbox":         {
+        "pages":[ "sandbox.html"]
+    },
     "update_url":      "http://github.com/daviddenton/qwg/artifacts/update.xml"
 }

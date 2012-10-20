@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <script type="text/javascript" src="lib/underscore/js/underscore-min.js"></script>
+    <script type="text/javascript" src="lib/underscore/js/underscore.string.min.js"></script>
+    <script type="text/javascript" src="bootstrap.js"></script>
+    <script type="text/javascript" src="Qwg.js"></script>
+</head>
+<body>
+<script>
+    window.addEventListener('message', function (event) {
+        var message = event.data;
+        eval("var schema = " + message.schema);
+        var result = new Qwg(schema)[message.type](message.query);
+        event.source.postMessage({response:result}, event.origin);
+    });
+</script>
+</body>
+</html>

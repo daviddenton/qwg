@@ -1,5 +1,22 @@
 function DefaultData() {
-    return {
+
+    var stringifyWithFunctions = function (obj) {
+        var placeholder = '____PLACEHOLDER____';
+        var fns = [];
+        var json = JSON.stringify(obj, function (key, value) {
+            if (typeof value === 'function') {
+                fns.push(value);
+                return placeholder;
+            }
+            return value;
+        }, 4);
+        json = json.replace(new RegExp('"' + placeholder + '"', 'g'), function (_) {
+            return fns.shift();
+        });
+        return json;
+    };
+
+    return stringifyWithFunctions({
         "search": {
             "google": function (query) {
                 return "http://www.google.com/search?q=" + query;
@@ -32,16 +49,16 @@ function DefaultData() {
         },
         "quotes": {
             bond:      {
-                "moore":  "http://www.google.com/search?q=Well just don't stand there Tibbit, unpack my clothes.",
-                "brosnan":"http://www.google.com/search?q=Vodka martini. Plenty of ice, if you can spare it.",
-                "craig":  "http://www.google.com/search?q=Yes, considerably.",
-                "connery":"http://www.google.com/search?q=I must be dreaming.",
-                "dalton": "http://www.google.com/search?q=Watch the birdie, you bastard...",
-                "lazenby":"http://www.google.com/search?q=It's alright, it's quite alright. She's just sleeping, you see, we have all the time in the world."
+                "moore":  "http://www.youtube.com/results?search_query=James+Bond+Well+just+don't+stand+there+Tibbit,+unpack+my+clothes.",
+                "brosnan":"http://www.youtube.com/results?search_query=James+Bond+Vodka+martini.+Plenty+of+ice,+if+you+can+spare+it.",
+                "craig":  "http://www.youtube.com/results?search_query=James+Bond+Yes,+considerably.",
+                "connery":"http://www.youtube.com/results?search_query=James+Bond+I+must+be+dreaming.",
+                "dalton": "http://www.youtube.com/results?search_query=James+Bond+Watch+the+birdie,+you+bastard...",
+                "lazenby":"http://www.youtube.com/results?search_query=James+Bond+It's+alright,+it's+quite+alright.+She's+just+sleeping,+you+see,+we+have+all+the+time+in+the+world."
             },
             "einstein":function () {
                 alert("Insanity: doing the same thing over and over again and expecting different results.");
             }
         }
-    };
+    });
 }
