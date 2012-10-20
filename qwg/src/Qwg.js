@@ -37,7 +37,7 @@ function Qwg(schema) {
                 if (tList.length == 0)  return undefined;
                 var newTarget = target[tList[0]];
                 if (_.isFunction(newTarget)) return newTarget(tList.slice(1).join(' '));
-                if (_.isString(newTarget)) return newTarget;
+                if (_.isString(newTarget)) return newTarget.replace("\$QUERY\$", _.rest(tList).join(' '));
 
                 return resolveUrl0(_.rest(tList), target[tList[0]]);
             }

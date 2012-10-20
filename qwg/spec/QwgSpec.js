@@ -26,7 +26,7 @@ describe("Qwg", function () {
                 }
             },
             "thomas":{
-                "injectedString":"queryGoesBetweenHere>$S$<"
+                "injectedString":"queryGoesHere_$QUERY$_"
             }
         };
 
@@ -83,6 +83,10 @@ describe("Qwg", function () {
 
             it("should resolve to the result of a function call", function () {
                 expect(qwg.resolveUrl(" bob simplefunction are cool")).toEqual("iWasCalledWith" + " are cool");
+            });
+
+            it("should replace $QUERY$ with the contents of the query", function () {
+                expect(qwg.resolveUrl(" thomas injectedString query term")).toEqual("queryGoesHere_query term_");
             });
         });
     });
