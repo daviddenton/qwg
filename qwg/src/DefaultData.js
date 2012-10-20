@@ -1,5 +1,4 @@
 function DefaultData() {
-
     var stringifyWithFunctions = function (obj) {
         var placeholder = '____PLACEHOLDER____';
         var fns = [];
@@ -18,18 +17,10 @@ function DefaultData() {
 
     return stringifyWithFunctions({
         "search": {
-            "google": function (query) {
-                return "http://www.google.com/search?q=" + query;
-            },
-            "bing":   function (query) {
-                return "http://www.bing.com/search?q=" + query;
-            },
-            "ask":    function (query) {
-                return "http://www.ask.com/web?q=" + query;
-            },
-            "wolfram":function (query) {
-                return "http://www.wolframalpha.com/input/?i=" + query;
-            }
+            "google": "http://www.google.com/search?q=$QUERY$",
+            "bing":   "http://www.bing.com/search?q=$QUERY$",
+            "ask":    "http://www.ask.com/web?q=$QUERY$",
+            "wolfram":"http://www.wolframalpha.com/input/?i=$QUERY$"
         },
         "torrent":{
             "isohunt":function (query) {
@@ -37,15 +28,9 @@ function DefaultData() {
             }
         },
         "vcs":    {
-            "github":    function (query) {
-                return "http://github.com/search?q=" + query;
-            },
-            "bitbucket": function (query) {
-                return "https://bitbucket.org/repo/all?name=" + query;
-            },
-            "googlecode":function (query) {
-                return "http://code.google.com/query/#q=" + query;
-            }
+            "github":    "http://github.com/search?q=$QUERY$",
+            "bitbucket": "http://bitbucket.org/repo/all?name=$QUERY$",
+            "googlecode": "http://code.google.com/query/#q=$QUERY$"
         },
         "quotes": {
             bond:      {
@@ -58,6 +43,16 @@ function DefaultData() {
             },
             "einstein":function () {
                 alert("Insanity: doing the same thing over and over again and expecting different results.");
+            }
+        },
+        "dynamic":{
+            "day":function () {
+                var day = {};
+                var today = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][new Date().getDay()];
+                day[today] = function(query) {
+                    return "http://www.google.com/search?q="+today + " AND " + query;
+                };
+                return day;
             }
         }
     });
