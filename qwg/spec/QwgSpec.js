@@ -33,6 +33,19 @@ describe("Qwg", function () {
         qwg = new Qwg(schema);
     });
 
+    describe("bug", function() {
+        var s2 =  function() {
+            return {
+                "name": {
+                    "bob": "http://google.com/"
+                }
+            };
+        }();
+
+        it("doesn't blow up", function () {
+            expect(new Qwg(s2).suggestions("name bob ")).toEqual(["name bob "]);
+        });
+    });
     describe("suggestions", function () {
         it("for whitespace only input should return list of first level items", function () {
             expect(qwg.suggestions(" ")).toEqual(["bill", "bob", "bond", "rita", "thomas"]);
