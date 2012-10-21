@@ -27,8 +27,9 @@ function Qwg(schema) {
 
                 matchedTokens.push(tList[0]);
                 var childNode = targetNode[tList[0]];
-                var newTargetNode = _.isFunction(childNode) && !_.isString(childNode(text)) ? childNode(text) : childNode;
-                return suggestions0(_.rest(tList), newTargetNode, matchedTokens);
+                var unmatchedTokens = _.rest(tList);
+                var newTargetNode = _.isFunction(childNode) && !_.isString(childNode("", text)) ? childNode(unmatchedTokens.join(' '), text) : childNode;
+                return suggestions0(unmatchedTokens, newTargetNode, matchedTokens);
             }
 
             return suggestions0(toQueryTokens(text), schema, []);
@@ -37,10 +38,10 @@ function Qwg(schema) {
             function resolveUrl0(tList, targetNode) {
                 if (tList.length == 0)  return undefined;
                 var newTarget = targetNode[tList[0]];
-                if (_.isFunction(newTarget) && _.isString(newTarget(""))) return newTarget(tList.slice(1).join(' '));
+                if (_.isFunction(newTarget) && _.isString(newTarget("", text))) return newTarget(tList.slice(1).join(' '));
                 if (_.isString(newTarget)) return newTarget.replace("\$QUERY\$", _.rest(tList).join(' '));
                 var childNode = targetNode[tList[0]];
-                var newTargetNode = _.isFunction(childNode) && !_.isString(childNode(text)) ? childNode(text) : childNode;
+                var newTargetNode = _.isFunction(childNode) && !_.isString(childNode("", text)) ? childNode(text, text) : childNode;
                 return resolveUrl0(_.rest(tList), newTargetNode);
             }
 
