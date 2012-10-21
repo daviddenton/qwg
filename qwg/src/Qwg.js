@@ -22,7 +22,7 @@ function Qwg(schema) {
                     return (_.isFunction(targetNode) || _.isString(targetNode)) ? [text] : _.map(sortedMatchingKeys("", targetNode), prependWithCurrentText);
                 }
                 if (!targetNode[tList[0]]) {
-                    return _.map(sortedMatchingKeys(tList[0], targetNode), prependWithCurrentText);
+                    return _.isString(targetNode) ? [text] : _.map(sortedMatchingKeys(tList[0], targetNode), prependWithCurrentText);
                 }
                 matchedTokens.push(tList[0]);
                 var childNode = targetNode[tList[0]];
