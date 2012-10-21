@@ -7,13 +7,23 @@ $(document).ready(function () {
         matchBrackets:true
     });
 
+    var memo;
     $("#save").click(function () {
         storage.save(editor.getValue(), function () {
             $("#message").text("saved").fadeOut(3000);
         });
     });
 
+    $("#reset").click(function () {
+        editor.setValue(DefaultData());
+    });
+
+    $("#cancel").click(function () {
+        editor.setValue(memo);
+    });
+
     storage.load(function (schema) {
+        memo = schema;
         editor.setValue(schema);
     });
 });
