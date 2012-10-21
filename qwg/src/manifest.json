@@ -21,5 +21,5 @@
     "sandbox":         {
         "pages":[ "sandbox.html"]
     },
-    "update_url":      "http://github.com/daviddenton/qwg/artifacts/update.xml"
+    "update_url":      "http://github.com/daviddenton/qwg/update.xml"
 }
