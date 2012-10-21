@@ -12,15 +12,14 @@ function Qwg(schema) {
     return {
         suggestions:function (text) {
             function suggestions0(tList, targetNode, matchedTokens) {
-
-                function leafSuggestionFor(query) {
-                    return (_.isFunction(targetNode) || _.isString(targetNode)) ? [text] : _.map(sortedMatchingKeys(query, targetNode), prependWithCurrentText);
-                }
-
                 function prependWithCurrentText(term) {
                     var newMatched = matchedTokens.slice();
                     newMatched.push(term);
                     return newMatched.join(' ');
+                }
+
+                function leafSuggestionFor(query) {
+                    return (_.isFunction(targetNode) || _.isString(targetNode)) ? [text] : _.map(sortedMatchingKeys(query, targetNode), prependWithCurrentText);
                 }
 
                 if (tList.length == 0) return leafSuggestionFor("");
