@@ -63,6 +63,14 @@ describe("Qwg", function () {
         it("should be able to support hardcoded end-values", function () {
             expect(qwg.suggestions(" bill hardcoded ")).toEqual([" bill hardcoded "]);
         });
+
+        it("does not return any further results once at a hardcoded leaf", function () {
+            expect(qwg.suggestions(" bill hardcoded something")).toEqual([" bill hardcoded something"]);
+        });
+
+        it("does not return any further results once at a function leaf", function () {
+            expect(qwg.suggestions(" rita higherOrderFunctions dynamic something else")).toEqual([" rita higherOrderFunctions dynamic something else"]);
+        });
     });
 
     describe("queries", function () {
