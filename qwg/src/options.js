@@ -7,7 +7,7 @@ $(document).ready(function () {
         matchBrackets:true
     });
 
-    var memo;
+    var memo = '';
     $("#save").click(function () {
         var newConfig = editor.getValue();
         storage.save(newConfig, function () {
