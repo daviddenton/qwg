@@ -32,7 +32,7 @@ function renderDynamicMenu(tabId) {
                 });
             }
 
-            renderTree0(rootMenuItem, o);
+//            renderTree0(rootMenuItem, o);
         });
     });
 }
