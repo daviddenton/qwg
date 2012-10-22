@@ -14,6 +14,9 @@ function AsyncQwg() {
         },
         resolveUrl: function (query, schema, callback) {
             sendMessage({type:'resolveUrl', query:query, schema:schema}, callback);
+        },
+        contextMenu: function (query, schema, callback) {
+            sendMessage({type:'contextMenu', query:query, schema:schema}, callback);
         }
     };
 }

@@ -35,6 +35,7 @@ describe("Qwg", function () {
 
     describe("suggestions", function () {
         it("for whitespace only input should return list of first level items", function () {
+            expect(qwg.suggestions("")).toEqual(["bill", "bob", "bond", "rita", "thomas"]);
             expect(qwg.suggestions(" ")).toEqual(["bill", "bob", "bond", "rita", "thomas"]);
         });
 
@@ -109,6 +110,38 @@ describe("Qwg", function () {
             it("should replace $QUERY$ with the contents of the query", function () {
                 expect(qwg.resolveUrl(" thomas injectedString query term")).toEqual("queryGoesHere_query term_");
             });
+        });
+    });
+
+    describe("context menu", function () {
+        var queryContent = 'query content goes here';
+
+        var expectedOutput = {
+            "bill":  {
+                "hardcoded":"hardcodedQuery"
+            },
+            "bob":   {
+                "simplefunction":"iWasCalledWith " + queryContent
+            },
+            "bond":  {
+                "moore":  "mooreQuery",
+                "craig":  "craigQuery",
+                "connery":"conneryQuery",
+                "dalton": "daltonQuery",
+                "lazenby":"lazenbyQuery"
+            },
+            "rita":  {
+                "higherOrderFunctions":{
+                    "dynamic":"secondTier " + queryContent
+                }
+            },
+            "thomas":{
+                "injectedString":"queryGoesHere_" + queryContent + "_"
+            }
+        };
+
+        it("generates the expected context menu", function () {
+            expect(qwg.contextMenu(queryContent)).toEqual(expectedOutput);
         });
     });
 });

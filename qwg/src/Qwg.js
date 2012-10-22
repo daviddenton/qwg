@@ -46,6 +46,22 @@ function Qwg(schema) {
             }
 
             return resolveUrl0(toQueryTokens(text), schema);
+        },
+        contextMenu:function (selection) {
+            function contextMenu0(query, targetNode) {
+                if (_.isString(targetNode)) return targetNode.replace("\$QUERY\$", selection);
+                if (_.isFunction(targetNode)) {
+                    var newNode = targetNode(selection);
+                    return _.isString(newNode) ? newNode.replace("\$QUERY\$", selection) : contextMenu0(query, newNode);
+                }
+                var newNode = {};
+                _.each(_.keys(targetNode), function (name) {
+                    newNode[name] = contextMenu0(name, targetNode[name]);
+                });
+                return newNode;
+            }
+
+            return contextMenu0(selection, schema);
         }
     };
 }
