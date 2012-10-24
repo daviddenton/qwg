@@ -2,7 +2,7 @@
 
 A Chrome browser extension that converts the Omnibox (the multi-use URL bar) into a predictive bookmark launcher for the browser, based on a configuration tree that you supply. An additional mode for searching the tree via the context-menu (right-click) is also supported.
 
-In it's simplest form, Qwg can be used to launch public webpages with content based on the inputted query (e.g. for search engines other than Google).  A more realistic (and advanced) real-world example would be to use it for consistently presented access to URL-based services in multiple environments (dev/test/prod).
+In it's simplest form, Qwg can be used to launch public webpages with content based on the inputted query (e.g. for search engines other than Google).  A more realistic (and advanced) real-world example would be to use it for consistently presented access to URL-based services in multiple development environments (dev/test/prod).
 
 ###Installation
 Currently, Qwg is not available in the Chrome Web Store, but it can be installed by downloading the .crx package file from Github and then manually dragging this file into the Chrome [Extensions option](chrome://chrome/extensions/) page.
