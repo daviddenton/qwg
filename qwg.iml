@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/qwg">
       <sourceFolder url="file://$MODULE_DIR$/qwg/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/qwg/spec" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/qwg/artifacts" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
