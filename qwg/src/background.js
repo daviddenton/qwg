@@ -21,18 +21,27 @@ chrome.omnibox.onInputEntered.addListener(function (text) {
 
 function renderDynamicMenu(tabId) {
     storage.load(function (schema) {
-        var rootMenuItem = chrome.contextMenus.create({title:"Qwg", contexts:["selection"]});
+        qwg.contextMenu("$QUERY$", schema, function (o) {
+            var rootMenuItem = chrome.contextMenus.create({title:"Qwg", contexts:["selection"]});
 
-        qwg.contextMenu("some query", schema, function (o) {
-            function renderTree0(parentMenuItem) {
-                _.each(_.keys(o), function (key) {
-                    console.log(key);
-                    var newMenuItem = chrome.contextMenus.create({title:key, contexts:["selection"], parentId:parentMenuItem});
-                    renderTree0(newMenuItem, o);
+            function renderTree0(parentMenuItem, targetNode) {
+                _.each(_.keys(targetNode), function (key) {
+                    var menuItemContext = {title:key, contexts:["selection"], parentId:parentMenuItem};
+                    var val = targetNode[key];
+                    if (!_.isString(val)) {
+                        var newTarget = _.isFunction(val) ? val("") : val;
+                        var newMenuItem = chrome.contextMenus.create(menuItemContext);
+                        renderTree0(newMenuItem, newTarget);
+                    } else {
+                        menuItemContext.onclick = function (info) {
+                            chrome.tabs.create({url:val.replace("\$QUERY\$", info.selectionText)});
+                        };
+                        chrome.contextMenus.create(menuItemContext);
+                    }
                 });
             }
 
-//            renderTree0(rootMenuItem, o);
+            renderTree0(rootMenuItem, o);
         });
     });
 }
