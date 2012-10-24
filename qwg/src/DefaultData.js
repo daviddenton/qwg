@@ -42,7 +42,7 @@ function DefaultData() {
                 "lazenby":"http://www.youtube.com/results?search_query=James+Bond+It's+alright,+it's+quite+alright.+She's+just+sleeping,+you+see,+we+have+all+the+time+in+the+world."
             },
             "einstein":function () {
-                alert("Insanity: doing the same thing over and over again and expecting different results.");
+                return "http://www.google.com/search?q=Insanity: doing the same thing over and over again and expecting different results.";
             }
         },
         "dynamic":{
