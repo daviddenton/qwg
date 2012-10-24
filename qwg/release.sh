@@ -1,6 +1,6 @@
 #!/bin/bash -e
 #
-# Purpose: Package the Qwg extension and upload it to github
+# Purpose: Package txtension and upload it to github
 
 if test $# -ne 1; then
   echo "Usage: release.sh <version>"

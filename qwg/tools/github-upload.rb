@@ -168,6 +168,7 @@ if $options[:force_upload]
   # Make sure the file doesn't already exist
   res = get("https://api.github.com/repos/#{repo}/downloads", $options[:token])
   info = JSON.parse(res.body)
+  puts info
   info.each do |remote_file|
     remote_file_name = remote_file["name"].to_s
     if remote_file_name == file_name then
