@@ -1,4 +1,4 @@
-##Qwg*   _noun_   _\ˈkw-eeg\_
+##*Qwg*   *noun*   *\\ˈkw-eeg\\*
 
 A Chrome browser extension that converts the Omnibox (the multi-use URL bar) into a predictive bookmark launcher for the browser, based on a configuration tree that you supply. An additional mode for searching the tree via the context-menu (right-click) is also supported.
 
