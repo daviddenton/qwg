@@ -13,4 +13,4 @@ version=$1
 
 mv src.crx artifacts/qwg-$version.crx
 
-ruby ./tools/upload-to-github.rb daviddenton daviddenton/qwg artifacts/qwg-$version.crx 'uploaded version $version'
+ruby ./tools/github-upload.rb artifacts/qwg-$version.crx daviddenton/qwg -f
