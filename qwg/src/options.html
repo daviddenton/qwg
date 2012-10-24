@@ -18,7 +18,6 @@
 <p>Some notes on configuration:
 <ul>
     <li>The code must resolve to a single Javascript object</li>
-    <li>Object keys cannot contain spaces, as it messes up the mapping of the query to parsing of the tree</li>
     <li>A node path in the object can terminate as:
         <ol>
             <li>A URL string - which will be used to create a new Chrome tab</li>
@@ -32,6 +31,9 @@
             <li>A Node function - one which takes the non-matched portion of the command and returns another object (with it's own sub-nodes)</li>
         </ol>
     </li>
+    <li>Object keys cannot contain spaces, as it messes up the mapping of the query to parsing of the tree</li>
+    <li>Since it is executed at various points during the extension lifecycle, the JavaScript object should contain only pure-functions (ie. have no side affects) if you want Qwg to behave predictably</li>
+    <li>For security, all JavaScript is executed in a Sandboxed environment, which means that it cannot access external URLs or the state of the browser</li>
 </ul>
 </p>
 
