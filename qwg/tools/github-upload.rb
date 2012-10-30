@@ -169,7 +169,6 @@ if $options[:force_upload]
   # Make sure the file doesn't already exist
   res = get("https://api.github.com/repos/#{repo}/downloads", $options[:token])
   info = JSON.parse(res.body)
-  puts "Got: #{info}"
   info.each do |remote_file|
     remote_file_name = remote_file["name"].to_s
     if remote_file_name == file_name then
@@ -207,4 +206,4 @@ die("S3 is mean to us.") unless res.class == Net::HTTPCreated
 
 
 # Print the URL to the file to stdout.
-puts "#{info['s3_url']}#{info['path']}"
+puts "Uploaded: #{info['s3_url']}#{info['path']}"
