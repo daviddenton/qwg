@@ -1,7 +1,7 @@
 {
     "name":            "Qwg",
     "description":     "Reprogramme the Chrome Omnibox",
-    "version":         "1.3",
+    "version":         "1.4",
     "manifest_version":2,
     "background":      {
         "page":"background.html"
@@ -21,5 +21,5 @@
     "sandbox":         {
         "pages":[ "sandbox.html"]
     },
-    "update_url":      "http://github.com/daviddenton/qwg/update.xml"
+    "update_url":      "http://github.com/downloads/daviddenton/qwg/update.xml"
 }
