@@ -20,6 +20,7 @@ sed 's/\$VERSION\$/'$version'/g' update_template.xml > artifacts/update.xml
 
 echo "Packing extension..."
 ./tools/crxmake.sh artifacts/qwg-$version qwg.pem
+mv qwg-$version.crx artifacts/
 
 echo "Created... artifacts/qwg-$version.crx"
 
