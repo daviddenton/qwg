@@ -1,3 +1,5 @@
+# script copied from: http://github.com/wereHamster/ghup
+
 #!/usr/bin/env ruby
 
 # Die if something goes wrong.
@@ -162,13 +164,12 @@ file_description = $options[:file_description] || ""
 # Get Oauth token for this script.
 $options[:token] = `git config --get github.upload-script-token`.chomp unless $options[:token]
 
-
 if $options[:force_upload]
 
   # Make sure the file doesn't already exist
   res = get("https://api.github.com/repos/#{repo}/downloads", $options[:token])
   info = JSON.parse(res.body)
-  puts info
+  puts "Got: #{info}"
   info.each do |remote_file|
     remote_file_name = remote_file["name"].to_s
     if remote_file_name == file_name then
