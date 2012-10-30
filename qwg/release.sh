@@ -8,11 +8,19 @@ if test $# -ne 1; then
 fi
 
 version=$1
-sed 's/\$VERSION\$/'$version'/g' update_template.xml > artifacts/update.xml
-echo "Packaging..."
-./tools/crxmake.sh src qwg.pem
 
-mv src.crx artifacts/qwg-$version.crx
+echo "Cleaning..."
+rm -rf artifacts
+mkdir artifacts
+
+echo "Preparing..."
+cp -R src artifacts/qwg-$version
+sed 's/\$VERSION\$/'$version'/g' src/manifest.json > artifacts/qwg-$version/manifest.json
+sed 's/\$VERSION\$/'$version'/g' update_template.xml > artifacts/update.xml
+
+echo "Packing extension..."
+./tools/crxmake.sh artifacts/qwg-$version qwg.pem
+
 echo "Created... artifacts/qwg-$version.crx"
 
 ruby ./tools/github-upload.rb artifacts/update.xml daviddenton/qwg -f
