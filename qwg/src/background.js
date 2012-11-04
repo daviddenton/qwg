@@ -1,3 +1,14 @@
+chrome.management.get("ipcooahedpajooamefolbohbgnkfljdl", function (extensionInfo) {
+    new ExtensionUpgrader(versionUpgrades).upgrade("1.8", extensionInfo.version);
+});
+
+
+chrome.runtime.onInstalled.addListener(function (details) {
+    chrome.management.get("khlmhlbelfjgdjieokifbmhieifdlhdk", function (extensionInfo) {
+        new ExtensionUpgrader(versionUpgrades).upgrade(details.previousVersion, extensionInfo.version);
+    });
+});
+
 var storage = new ChromeStorage(DefaultData);
 var qwg = new AsyncQwg();
 

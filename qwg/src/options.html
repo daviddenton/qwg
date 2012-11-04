@@ -6,36 +6,60 @@
 <body>
 <h1>Qwg: configuration</h1>
 
-<p>Paste your Javascript config object below.</p>
-
-<div id="code"></div>
-<div id="controls">
-    <button id="save">save</button>
-    <button id="reset">reset changes</button>
-    <button id="defaults">restore default config</button>
-    <span id="message"/>
+<div id="configControl">
+    <label class="radio">
+        <input type="radio" name="optionsRadios" id="local" value="localConfig" checked="checked"/>
+        Local-based
+    </label>
+    <label class="radio">
+        <input type="radio" name="optionsRadios" id="url" value="urlBasedConfig"/>Url-based
+    </label>
 </div>
-<p>Some notes on configuration:
-<ul>
-    <li>The code must resolve to a single Javascript object</li>
-    <li>A node path in the object can terminate as:
-        <ol>
-            <li>A URL string - which will be used to create a new Chrome tab</li>
-            <li>undefined - no action taken</li>
-        </ol>
-    </li>
-    <li>Individual nodes in the config object can be:
-        <ol>
-            <li>A hardcoded URL string. The token <strong>$QUERY$</strong> in this string will be replaced with the non-matched portion of the command</li>
-            <li>A Leaf function - one which takes the non-matched portion of the command and returns a URL</li>
-            <li>A Node function - one which takes the non-matched portion of the command and returns another object (with it's own sub-nodes)</li>
-        </ol>
-    </li>
-    <li>Object keys cannot contain spaces, as it messes up the mapping of the query to parsing of the tree</li>
-    <li>Since it is executed at various points during the extension lifecycle, the JavaScript object should contain only pure-functions (ie. have no side affects) if you want Qwg to behave predictably</li>
-    <li>For security, all JavaScript is executed in a Sandboxed environment, which means that it cannot access external URLs or the state of the browser</li>
-</ul>
-</p>
+<div id="urlBasedConfig">
+    <p>Enter the URL for the config file:
+        <input type="text" value="" id="configUrl"/>
+    </p>
+</div>
+<div id="localConfig">
+    <p>Paste your Javascript config object below.</p>
+
+    <div id="code"></div>
+    <div id="controls">
+        <button id="save">save</button>
+        <button id="reset">reset changes</button>
+        <button id="defaults">restore default config</button>
+        <span id="message"/>
+    </div>
+    <p>Some notes on configuration:
+    <ul>
+        <li>The code must resolve to a single Javascript object</li>
+        <li>A node path in the object can terminate as:
+            <ol>
+                <li>A URL string - which will be used to create a new Chrome tab</li>
+                <li>undefined - no action taken</li>
+            </ol>
+        </li>
+        <li>Individual nodes in the config object can be:
+            <ol>
+                <li>A hardcoded URL string. The token <strong>$QUERY$</strong> in this string will be replaced with the
+                    non-matched portion of the command
+                </li>
+                <li>A Leaf function - one which takes the non-matched portion of the command and returns a URL</li>
+                <li>A Node function - one which takes the non-matched portion of the command and returns another object
+                    (with it's own sub-nodes)
+                </li>
+            </ol>
+        </li>
+        <li>Object keys cannot contain spaces, as it messes up the mapping of the query to parsing of the tree</li>
+        <li>Since it is executed at various points during the extension lifecycle, the JavaScript object should contain
+            only pure-functions (ie. have no side affects) if you want Qwg to behave predictably
+        </li>
+        <li>For security, all JavaScript is executed in a Sandboxed environment, which means that it cannot access
+            external URLs or the state of the browser
+        </li>
+    </ul>
+    </p>
+</div>
 
 </body>
 <script type="text/javascript" src="lib/codemirror/codemirror.js"></script>
