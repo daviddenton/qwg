@@ -19,12 +19,12 @@ Qwg can be activated by typing 'qwg' into the Chrome Omnibox and then hitting &l
 ####An example
 For the configuration: `{ google: "http://google.com/$QUERY$", bing: "http://bing.com/$QUERY$" }`, a query of `qwg google lolcats` will search google for some cute felines.
 
-![qwg omnibox menu](http://raw.github.com/daviddenton/qwg/master/qwg/docs/omnibox.png "Omnibox")
+![qwg omnibox menu](http://github.com/daviddenton/qwg/raw/master/qwg/docs/omnibox.png "Omnibox")
 
 ###Context-menu
 Select some text in the browser and then right-click to navigate the configuration tree using the context-menu using the selected text as the end query. For the above example, you'd highlight the word 'lolcats' then right-click and select `Qwg -> google` to achieve the same result.
 
-![qwg context menu](http://raw.github.com/daviddenton/qwg/master/qwg/docs/context.png "Context")
+![qwg context menu](http://github.com/daviddenton/qwg/raw/master/qwg/docs/context.png "Context")
 
 ####Configuration
 Opening the Qwg extension options tab will display an inline editor. The configuration tree is coded in JavaScript and which should resolve to a valid JavaScript object, whose properties make up the tree of available completions presented to the user. The nature of the configration code should be purely functional (ie. have no side-effects), as it will be executed at various points in the extension lifecycle.
