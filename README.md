@@ -17,12 +17,20 @@ Qwg can be activated by typing 'qwg' into the Chrome Omnibox and then hitting &l
 2. If you know the query that you want to run, just keep typing. Qwg will automatically narrow down the available completions as you type.
 
 ####An example
-For the configuration: `{ google: "http://google.com/$QUERY$", bing: "http://bing.com/$QUERY$" }`, a query of `qwg google lolcats` will search google for some cute felines.
+For the configuration:
+`{
+    ask: "http://ask.com/$QUERY$",
+    bing: "http://bing.com/$QUERY$",
+    google: "http://google.com/$QUERY$",
+    wolfram: "http://wolfram.com/$QUERY$"
+}`
+
+, a query of `qwg ask lolcats` will search `ask.com` for some cute felines.
 
 ![qwg omnibox menu](http://github.com/daviddenton/qwg/raw/master/qwg/docs/omnibox.png "Omnibox")
 
 ###Context-menu
-Select some text in the browser and then right-click to navigate the configuration tree using the context-menu using the selected text as the end query. For the above example, you'd highlight the word 'lolcats' then right-click and select `Qwg -> google` to achieve the same result.
+Select some text in the browser and then right-click to navigate the configuration tree using the context-menu using the selected text as the end query. For the above example, you'd highlight the word `lolcats` then right-click and select `Qwg -> ask` to achieve the same result.
 
 ![qwg context menu](http://github.com/daviddenton/qwg/raw/master/qwg/docs/context.png "Context")
 
