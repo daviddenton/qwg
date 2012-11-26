@@ -18,12 +18,13 @@ Qwg can be activated by typing 'qwg' into the Chrome Omnibox and then hitting &l
 
 ####An example
 For the configuration:
-`{
+ ```javascript
+ {
     ask: "http://ask.com/$QUERY$",
     bing: "http://bing.com/$QUERY$",
     google: "http://google.com/$QUERY$",
     wolfram: "http://wolfram.com/$QUERY$"
-}`
+}```
 
 , a query of `qwg ask lolcats` will search `ask.com` for some cute felines.
 
