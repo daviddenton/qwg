@@ -24,7 +24,8 @@ For the configuration:
     bing: "http://bing.com/$QUERY$",
     google: "http://google.com/$QUERY$",
     wolfram: "http://wolfram.com/$QUERY$"
-}```
+}
+```
 
 , a query of `qwg ask lolcats` will search `ask.com` for some cute felines.
 
