@@ -1,60 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Qwg by daviddenton</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Qwg : A Chrome browser extension which converts the Omnibox (the multi-use URL bar) into a keyboard launcher tool for the browser, based on a configuration schema that you supply." />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Qwg</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Qwg</h1>
-        <p class="header">A Chrome browser extension which converts the Omnibox (the multi-use URL bar) into a keyboard launcher tool for the browser, based on a configuration schema that you supply.</p>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/daviddenton/qwg/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/daviddenton/qwg/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/daviddenton/qwg">View On GitHub</a></li>
-        </ul>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/daviddenton/qwg">View on GitHub</a>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/daviddenton">daviddenton</a></p>
+          <h1 id="project_title">Qwg</h1>
+          <h2 id="project_tagline">A Chrome browser extension which converts the Omnibox (the multi-use URL bar) into a keyboard launcher tool for the browser, based on a configuration schema that you supply.</h2>
 
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/daviddenton/qwg/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/daviddenton/qwg/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 
-      </header>
-      <section>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h2>
-<em>Qwg</em>   _noun_   _\ˈkw-eeg_</h2>
+<a name="qwg-noun-%CB%88kw-eeg" class="anchor" href="#qwg-noun-%CB%88kw-eeg"><span class="octicon octicon-link"></span></a>
+<em>Qwg</em>   <em>noun</em>   <em>\ˈkw-eeg\</em>
+</h2>
 
 <p>A Chrome browser extension that converts the Omnibox (the multi-use URL bar) into a predictive bookmark launcher for the browser, based on a configuration tree that you supply. An additional mode for searching the tree via the context-menu (right-click) is also supported.</p>
 
 <p>In it's simplest form, Qwg can be used to launch public webpages with content based on the inputted query (e.g. for search engines other than Google).  A more realistic (and advanced) real-world example would be to use it for consistently presented access to URL-based services in multiple development environments (dev/test/prod).</p>
 
-<h3>Installation</h3>
+<h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
 
-<p>Currently, Qwg is not available in the Chrome Web Store, but it can be installed by downloading the .crx package file from Github and then manually dragging this file into the Chrome <a>Extensions option</a> page.</p>
+<p>Currently, Qwg is not available in the Chrome Web Store, but it can be installed by downloading the .crx package file from Github and then manually dragging this file into the Chrome Extensions option page.</p>
 
-<h3>Usage</h3>
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
 
-<h4>Omnibox</h4>
+<h4>
+<a name="omnibox" class="anchor" href="#omnibox"><span class="octicon octicon-link"></span></a>Omnibox</h4>
 
 <p>Qwg can be activated by typing 'qwg' into the Chrome Omnibox and then hitting &lt;space&gt;. Then there are 2 options:</p>
 
 <ol>
 <li><p>To see a list of available completions, hit &lt;space&gt; again. This will bring up a list of options based on the Qwg engine walking the configuration tree (see below for more details). Selecting one of these options with &lt;space&gt; will bring up the next tier of completions.</p></li>
 <li><p>If you know the query that you want to run, just keep typing. Qwg will automatically narrow down the available completions as you type.</p></li>
-</ol><h4>An example</h4>
+</ol><h4>
+<a name="an-example" class="anchor" href="#an-example"><span class="octicon octicon-link"></span></a>An example</h4>
 
 <p>For the configuration:</p>
 
-<div class="highlight"><pre> <span class="p">{</span>
+<div class="highlight highlight-javascript"><pre> <span class="p">{</span>
     <span class="nx">ask</span><span class="o">:</span> <span class="s2">"http://ask.com/$QUERY$"</span><span class="p">,</span>
     <span class="nx">bing</span><span class="o">:</span> <span class="s2">"http://bing.com/$QUERY$"</span><span class="p">,</span>
     <span class="nx">google</span><span class="o">:</span> <span class="s2">"http://google.com/$QUERY$"</span><span class="p">,</span>
@@ -66,13 +73,15 @@
 
 <p><img src="http://github.com/daviddenton/qwg/raw/master/qwg/docs/omnibox.png" alt="qwg omnibox menu" title="Omnibox"></p>
 
-<h3>Context-menu</h3>
+<h3>
+<a name="context-menu" class="anchor" href="#context-menu"><span class="octicon octicon-link"></span></a>Context-menu</h3>
 
 <p>Select some text in the browser and then right-click to navigate the configuration tree using the context-menu using the selected text as the end query. For the above example, you'd highlight the word <code>lolcats</code> then right-click and select <code>Qwg -&gt; ask</code> to achieve the same result.</p>
 
 <p><img src="http://github.com/daviddenton/qwg/raw/master/qwg/docs/context.png" alt="qwg context menu" title="Context"></p>
 
-<h4>Configuration</h4>
+<h4>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h4>
 
 <p>Opening the Qwg extension options tab will display an inline editor. The configuration tree is coded in JavaScript and which should resolve to a valid JavaScript object, whose properties make up the tree of available completions presented to the user. The nature of the configration code should be purely functional (ie. have no side-effects), as it will be executed at various points in the extension lifecycle.</p>
 
@@ -80,15 +89,22 @@
 
 <p>The default configuration of the extension has examples of the various available options for tree resolution.</p>
 
-<h4>A note on security</h4>
+<h4>
+<a name="a-note-on-security" class="anchor" href="#a-note-on-security"><span class="octicon octicon-link"></span></a>A note on security</h4>
 
 <p>Due to the nature of Qwg using user-defined JavaScript scripts, the Chrome API requires that all such code be executed in a sandboxed environment, which places some limitations on what can be executed. The configuration object cannot therefore load external JavaScript files.</p>
       </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Qwg maintained by <a href="https://github.com/daviddenton">daviddenton</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+
+    
+
   </body>
 </html>
