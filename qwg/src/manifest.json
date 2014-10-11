@@ -15,11 +15,10 @@
         "keyword":"qwg"
     },
     "options_page":    "options.html",
-    "permissions":     [
+    "permissions": [
         "contextMenus", "storage", "tabs", "management"
     ],
     "sandbox":         {
         "pages":[ "sandbox.html"]
-    },
-    "update_url":      "http://github.com/downloads/daviddenton/qwg/update.xml"
+    }
 }
