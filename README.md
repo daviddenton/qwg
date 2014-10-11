@@ -1,6 +1,6 @@
 ##*Qwg*   _noun_   _\ˈkw-eeg\_
 
-![qwg install](https://github.com/daviddenton/qwg/blob/master/qwg/docs/ChromeWebStore_Badge_v2_206x58.png "Install")
+![qwg install](docs/ChromeWebStore_Badge_v2_206x58.png "Install")
 
 A Chrome browser extension that converts the Omnibox (the multi-use URL bar) into a predictive bookmark launcher for the browser, based on a configuration tree that you supply. An additional mode for searching the tree via the context-menu (right-click) is also supported.
 
@@ -29,7 +29,7 @@ For the configuration:
     wolfram: "http://wolfram.com/$QUERY$"
 }
 ```
-a query of `qwg ask lolcats` will search `ask.com` for some cute felines.
+a query of `qwg search ask lolcats` will search `ask.com` for some cute felines.
 
 ![qwg omnibox menu](https://github.com/daviddenton/qwg/raw/master/qwg/docs/omnibox.png "Omnibox")
 
