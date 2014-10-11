@@ -5,7 +5,9 @@ A Chrome browser extension that converts the Omnibox (the multi-use URL bar) int
 In it's simplest form, Qwg can be used to launch public webpages with content based on the inputted query (e.g. for search engines other than Google).  A more realistic (and advanced) real-world example would be to use it for consistently presented access to URL-based services in multiple development environments (dev/test/prod).
 
 ###Installation
-Currently, Qwg is not available in the Chrome Web Store, but it can be installed by downloading the .crx package file from Github and then manually dragging this file into the Chrome [Extensions option](chrome://chrome/extensions/) page.
+![install qwg](http://github.com/daviddenton/qwg/blob/master/qwg/docs/ChromeWebStore_Badge_v2_206x58.png "Install")
+
+Alternatively, Qwg can be installed by downloading the .crx package file from the artifacts directory in the repo and then manually dragging this file into the Chrome [Extensions option](chrome://chrome/extensions/) page.
 
 ###Usage
 
