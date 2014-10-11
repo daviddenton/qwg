@@ -5,7 +5,7 @@ A Chrome browser extension that converts the Omnibox (the multi-use URL bar) int
 In it's simplest form, Qwg can be used to launch public webpages with content based on the inputted query (e.g. for search engines other than Google).  A more realistic (and advanced) real-world example would be to use it for consistently presented access to URL-based services in multiple development environments (dev/test/prod).
 
 ###Installation
-![install qwg](http://github.com/daviddenton/qwg/blob/master/qwg/docs/ChromeWebStore_Badge_v2_206x58.png "Install")
+![install qwg](https://github.com/daviddenton/qwg/blob/master/qwg/docs/ChromeWebStore_Badge_v2_206x58.png "Install")
 
 Alternatively, Qwg can be installed by downloading the .crx package file from the artifacts directory in the repo and then manually dragging this file into the Chrome [Extensions option](chrome://chrome/extensions/) page.
 
@@ -30,12 +30,12 @@ For the configuration:
 ```
 a query of `qwg ask lolcats` will search `ask.com` for some cute felines.
 
-![qwg omnibox menu](http://github.com/daviddenton/qwg/raw/master/qwg/docs/omnibox.png "Omnibox")
+![qwg omnibox menu](https://github.com/daviddenton/qwg/raw/master/qwg/docs/omnibox.png "Omnibox")
 
 ###Context-menu
 Select some text in the browser and then right-click to navigate the configuration tree using the context-menu using the selected text as the end query. For the above example, you'd highlight the word `lolcats` then right-click and select `Qwg -> ask` to achieve the same result.
 
-![qwg context menu](http://github.com/daviddenton/qwg/raw/master/qwg/docs/context.png "Context")
+![qwg context menu](https://github.com/daviddenton/qwg/raw/master/qwg/docs/context.png "Context")
 
 ####Configuration
 Opening the Qwg extension options tab will display an inline editor. The configuration tree is coded in JavaScript and which should resolve to a valid JavaScript object, whose properties make up the tree of available completions presented to the user. The nature of the configration code should be purely functional (ie. have no side-effects), as it will be executed at various points in the extension lifecycle.
