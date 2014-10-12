@@ -8,7 +8,7 @@ In it's simplest form, Qwg can be used to launch public webpages with content ba
 
 ###Installation
 
-From the [Chrome Web Store](https://chrome.google.com/webstore/detail/qwg/gdnhdogahjoiggjnlmbhdlgeihfioeic), Qwg can be installed by downloading the .crx package file from the artifacts directory in the repo and then manually dragging this file into the Chrome [Extensions option](chrome://chrome/extensions/) page.
+From the [Chrome Web Store](https://chrome.google.com/webstore/detail/qwg/gdnhdogahjoiggjnlmbhdlgeihfioeic). Qwg can also be installed by downloading the .crx package file from the artifacts directory in the repo and then manually dragging this file into the Chrome [Extensions option](chrome://chrome/extensions/) page.
 
 ###Usage
 
